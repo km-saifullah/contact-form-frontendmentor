@@ -1,0 +1,6 @@
+@import "../common/variable.scss";
+
+@mixin required {
+  color: $primary;
+  font-weight: 700;
+}

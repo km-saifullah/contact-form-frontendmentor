@@ -1,0 +1,8 @@
+@import "../common/variable.scss";
+
+@mixin heading {
+  color: $heading;
+  font-size: 28px;
+  font-weight: 700;
+  padding-bottom: 25px;
+}

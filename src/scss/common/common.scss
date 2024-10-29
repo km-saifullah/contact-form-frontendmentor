@@ -1,0 +1,36 @@
+@import "./variable.scss";
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap");
+
+// === Common Design Start
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Karla", sans-serif;
+}
+ul,
+ol {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  line-height: 0.8;
+}
+body {
+  color: $formLevel;
+  font-size: 16px;
+  font-weight: 400;
+}
+.container {
+  width: 1440px;
+  margin: 0 auto;
+}
+// === Common Design End
