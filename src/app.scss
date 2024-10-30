@@ -4,6 +4,8 @@
 @import "@scss/mixins/required.scss";
 @import "@scss/mixins/button.scss";
 @import "@scss/mixins/error.scss";
+@import "@scss/mixins/mobile.scss";
+@import "@scss/mixins/tablet.scss";
 
 // app design start
 .main_contact {
@@ -30,6 +32,7 @@
           display: flex;
           align-items: center;
           justify-content: space-between;
+          flex-wrap: nowrap;
           padding-bottom: 20px;
           div {
             .label_name {
@@ -77,6 +80,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: nowrap;
+            gap: 0px;
             .radio_label {
               display: flex;
               align-items: center;
@@ -197,7 +202,10 @@
           }
         }
       }
+      @include mobile;
+      @include tablet;
     }
   }
 }
+
 // app design end

@@ -1,0 +1,85 @@
+@use "../common/variable.scss";
+// reponsive design for mobile devide
+@mixin tablet {
+  @media (max-width: 1024px) {
+    width: 100%;
+    padding: 20px;
+    .contact_form {
+      .name_wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding-bottom: 20px;
+        div {
+          width: 100%;
+          .label_name {
+            padding: 10px 0;
+            .required_sign {
+              @include required;
+            }
+          }
+          .input_field {
+            width: 100%;
+            height: 50px;
+            @include input;
+          }
+          .error_message {
+            @include error;
+          }
+        }
+      }
+      .query_container {
+        padding-bottom: 20px;
+        .label_name {
+          padding: 10px 0;
+          .required_sign {
+            @include required;
+          }
+        }
+        .radio_wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 20px;
+          .radio_label {
+            display: flex;
+            align-items: center;
+            column-gap: 10px;
+            width: 100%;
+            height: 50px;
+            border: 1px solid variable.$borderColor;
+            outline: none;
+            border-radius: 8px;
+            padding: 15px;
+            .radio_input {
+              appearance: none;
+              height: 20px;
+              width: 20px;
+              border: 2px solid variable.$borderColor;
+              border-radius: 50%;
+              position: relative;
+              cursor: pointer;
+
+              &:checked::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 12px;
+                height: 12px;
+                background-color: variable.$primary; /* Checked color */
+                border-radius: 50%;
+              }
+            }
+          }
+        }
+        .error_message {
+          @include error;
+        }
+      }
+    }
+  }
+}
