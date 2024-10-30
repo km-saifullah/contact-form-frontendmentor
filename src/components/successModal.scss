@@ -1,0 +1,29 @@
+@use "../scss/common/variable.scss" as variable;
+
+.success_wrapper {
+  margin: 0 auto;
+  background-color: variable.$successBg;
+  padding: 15px;
+  border-radius: 8px;
+  width: 450px;
+  .success_heading {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    padding-bottom: 20px;
+    .icon_container {
+      color: variable.$white;
+      font-size: 16px;
+    }
+    div {
+      h3 {
+        color: variable.$white;
+        font-size: 16px;
+        font-weight: 700;
+      }
+    }
+  }
+  p {
+    color: variable.$white;
+  }
+}

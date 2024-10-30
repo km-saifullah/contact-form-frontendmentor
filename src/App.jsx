@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import InputField from "./components/InputField";
 import "./app.scss";
 import { emailValidation, nameValidation } from "./validation/formValidation";
+import SuccessModal from "./components/SuccessModal";
 
 const App = () => {
   const [inputField, setInputField] = useState({
@@ -20,6 +21,7 @@ const App = () => {
     queryType: "",
     consentBtn: "",
   });
+  const [isOpen, setIsOpen] = useState(false);
 
   // handle input fields
   const handleInputField = (e) => {
@@ -70,8 +72,13 @@ const App = () => {
     });
     console.log(inputField);
 
-    if (!error && inputField) {
-      alert("<p>Hello</p>");
+    const noErrors = Object.values(error).every(
+      (value) => value === "" || value === false
+    );
+    console.log("noerror:", noErrors);
+
+    if (!noErrors) {
+      setIsOpen(true);
     }
 
     // set the input value after submit the form
@@ -89,6 +96,7 @@ const App = () => {
   return (
     <main className="main_contact">
       <div className="container">
+        <div>{isOpen && <SuccessModal />}</div>
         <div className="form_wrapper">
           <div className="heading">
             <h1>Contact Us</h1>
