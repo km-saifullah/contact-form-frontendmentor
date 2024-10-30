@@ -88,8 +88,25 @@
               border-radius: 8px;
               padding: 15px;
               .radio_input {
+                appearance: none;
                 height: 20px;
                 width: 20px;
+                border: 2px solid variable.$borderColor;
+                border-radius: 50%;
+                position: relative;
+                cursor: pointer;
+
+                &:checked::before {
+                  content: "";
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  width: 12px;
+                  height: 12px;
+                  background-color: variable.$primary; /* Checked color */
+                  border-radius: 50%;
+                }
               }
             }
           }
@@ -121,8 +138,35 @@
             align-items: center;
             column-gap: 20px;
             .checkbox_field {
+              appearance: none; /* Hide default checkbox */
               height: 20px;
               width: 20px;
+              border: 2px solid #ccc;
+              border-radius: 4px;
+              cursor: pointer;
+              position: relative;
+
+              &:checked {
+                background-color: variable.$primary;
+              }
+              &:checked::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 10px;
+                height: 10px;
+                background-color: white;
+                clip-path: polygon(
+                  14% 44%,
+                  0% 65%,
+                  50% 100%,
+                  100% 20%,
+                  80% 0%,
+                  43% 62%
+                );
+              }
             }
             .required_sign {
               @include required;

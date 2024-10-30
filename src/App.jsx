@@ -70,7 +70,7 @@ const App = () => {
     });
     console.log(inputField);
 
-    if (inputField) {
+    if (!error && inputField) {
       alert("<p>Hello</p>");
     }
 
