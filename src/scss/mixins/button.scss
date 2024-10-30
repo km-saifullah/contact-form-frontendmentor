@@ -1,11 +1,11 @@
-@import "../common/variable.scss";
+@use "../common/variable.scss";
 
 @mixin button {
   border: none;
   outline: none;
   border-radius: 8px;
-  background-color: $primary;
-  color: $white;
+  background-color: variable.$primary;
+  color: variable.$white;
   font-weight: 700;
   font-size: 16px;
   cursor: pointer;

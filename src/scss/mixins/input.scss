@@ -1,7 +1,7 @@
-@import "../common/variable.scss";
+@use "../common/variable.scss";
 
 @mixin input {
-  border: 1px solid $borderColor;
+  border: 1px solid variable.$borderColor;
   outline: none;
   border-radius: 8px;
   padding: 15px;

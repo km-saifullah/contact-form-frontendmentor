@@ -1,6 +1,6 @@
-@import "../common/variable.scss";
+@use "../common/variable.scss";
 
 @mixin required {
-  color: $primary;
+  color: variable.$primary;
   font-weight: 700;
 }
