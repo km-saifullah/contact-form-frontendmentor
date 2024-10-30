@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import InputField from "./components/InputField";
 import "./app.scss";
+import { emailValidation, nameValidation } from "./validation/formValidation";
 
 const App = () => {
   const [inputField, setInputField] = useState({
@@ -36,8 +37,44 @@ const App = () => {
 
   // handle submit
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // error handeling
+    const firstNameError = nameValidation(
+      inputField.firstName,
+      "First name is required"
+    );
+    const lastNameError = nameValidation(
+      inputField.lastName,
+      "Last name is required"
+    );
+    const emailError = emailValidation(inputField.email);
+    const messageError = nameValidation(
+      inputField.message,
+      "Message is required"
+    );
+    const queryError = nameValidation(
+      inputField.queryType,
+      "Please select a query type"
+    );
+    const consentError = nameValidation(
+      inputField.consentBtn,
+      "To submit this form, please consent to being to contacted"
+    );
+    setError({
+      ...error,
+      firstName: firstNameError,
+      lastName: lastNameError,
+      email: emailError,
+      message: messageError,
+      queryType: queryError,
+      consentBtn: consentError,
+    });
     console.log(inputField);
+
+    if (inputField) {
+      alert("<p>Hello</p>");
+    }
+
+    // set the input value after submit the form
     setInputField({
       firstName: "",
       lastName: "",
@@ -46,6 +83,7 @@ const App = () => {
       queryType: "",
       consentBtn: false,
     });
+    e.preventDefault();
   };
 
   return (
@@ -69,7 +107,9 @@ const App = () => {
                     onChange={handleInputField}
                     className="input_field"
                   />
-                  <p className="error_message">First name is required</p>
+                  {error.firstName ? (
+                    <p className="error_message">{error.firstName}</p>
+                  ) : null}
                 </div>
                 <div>
                   <p className="label_name">
@@ -82,7 +122,9 @@ const App = () => {
                     onChange={handleInputField}
                     className="input_field"
                   />
-                  <p className="error_message">Last name is required</p>
+                  {error.lastName ? (
+                    <p className="error_message">{error.lastName}</p>
+                  ) : null}
                 </div>
               </div>
               <div className="email_wrapper">
@@ -96,9 +138,9 @@ const App = () => {
                   onChange={handleInputField}
                   className="input_field"
                 />
-                <p className="error_message">
-                  Please enter a valid email address
-                </p>
+                {error.email ? (
+                  <p className="error_message">{error.email}</p>
+                ) : null}
               </div>
               <div className="query_container">
                 <p className="label_name">
@@ -128,7 +170,9 @@ const App = () => {
                     <p>Support Request</p>
                   </div>
                 </div>
-                <p className="error_message">Please select a query type</p>
+                {error.queryType ? (
+                  <p className="error_message">{error.queryType}</p>
+                ) : null}
               </div>
               <div className="message_wrapper">
                 <p className="label_name">
@@ -141,7 +185,9 @@ const App = () => {
                   onChange={handleInputField}
                   className="input_field"
                 />
-                <p className="error_message">Message is required</p>
+                {error.message ? (
+                  <p className="error_message">{error.message}</p>
+                ) : null}
               </div>
               <div className="consent_container">
                 <div className="consent_wrapper">
@@ -158,11 +204,13 @@ const App = () => {
                     <sup className="required_sign">*</sup>
                   </label>
                 </div>
-                <div className="submit_error">
-                  <p className="error_message">
-                    To submit this form, please consent to being to contacted
-                  </p>
-                </div>
+                {error.consentBtn ? (
+                  <div className="submit_error">
+                    <p className="error_message">
+                      To submit this form, please consent to being to contacted
+                    </p>
+                  </div>
+                ) : null}
               </div>
               <div className="btn_wrapper">
                 <button onClick={handleSubmit}>Submit</button>
